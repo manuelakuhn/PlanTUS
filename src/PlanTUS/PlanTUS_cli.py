@@ -157,7 +157,7 @@ def run(args):
     else:
         transducer_surface_model_filepath = os.path.join(plantus_main_folder, "resources", "transducer_models", "TRANSDUCER-NEUROFUS-CTX-500-4_DEVICE.surf.gii")
     # update paths according to user configuration
-    connectome_wb_path = config["connectome_wb_path"]
+    connectome_wb_path = config.get("connectome_wb_path", str(Path(shutil.which('wb_command')).parent))
 
     #===============================================================================
     # Setup

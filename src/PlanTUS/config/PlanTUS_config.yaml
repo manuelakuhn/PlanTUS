@@ -48,5 +48,4 @@ weight_skin_skull_angles: 0.2
 weight_skull_thickness: 0.2
 # Setup ------------------------------------------------------------------------
 # Path to connectome workbench binaries
-connectome_wb_path: /usr/local/workbench/bin_linux64
-
+#connectome_wb_path: /usr/local/workbench/bin_linux64
