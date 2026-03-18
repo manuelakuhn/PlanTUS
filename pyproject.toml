@@ -21,8 +21,8 @@ dependencies = [
   "PyYAML"
 ]
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
@@ -32,6 +32,13 @@ path = "src/PlanTUS/__init__.py"
 
 [project.scripts]
 plantus = "PlanTUS.PlanTUS_cli:main"
+imagetransform_4kplan = "PlanTUS.ImageTransform_4kPlan:main"
+
+[project.optional-dependencies]
+imagetransform = [
+  "antspyx",
+  "bids_validator"
+]
 
 [project.urls]
 Homepage = "https://github.com/mlueckel/PlanTUS"
