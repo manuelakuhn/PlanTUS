@@ -58,7 +58,8 @@ placement_scene_template_filepath = None
 def main():
     parser = argparse.ArgumentParser(description="PlanTUS command line interface")
     parser.add_argument("--version", action="store_true", help="Print the version number and exit.")
-    skip_argument="?" if '--version' in sys.argv else 1
+    parser.add_argument("--create_config", type=str, help="Create a PlanTUS example config file in the fiven path.")
+    skip_argument="?" if '--version' in sys.argv or "--create_config" in sys.argv else 1
     parser.add_argument("t1", type=str, help="Path to T1 image", nargs=skip_argument)
     parser.add_argument("mesh", type=str,  help="Path to head mesh", nargs=skip_argument)
     parser.add_argument("roi", type=str, help="Path to target ROI", nargs=skip_argument)
@@ -71,11 +72,11 @@ def main():
 
     run(args)
 
-def get_config(config_argument):
+def get_config(config_argument, default_config):
 
     if config_argument is None:
         # use default config file
-        config_file = Path(__file__).absolute().parent / "config/PlanTUS_config.yaml"
+        config_file = default_config
     else:
         config_file = Path(config_argument)
 
@@ -98,6 +99,13 @@ def run(args):
         print(PlanTUS.__version__)
         sys.exit(1)
 
+    default_config = Path(__file__).absolute().parent / "config/PlanTUS_config.yaml"
+
+    if args.create_config:
+        print("Create config file in", args.create_config)
+        shutil.copy(default_config, args.create_config)
+        sys.exit(0)
+
     #===============================================================================
     #===============================================================================
     # Configure inputs
@@ -118,7 +126,7 @@ def run(args):
 
 
     # Transducer-specific variables ------------------------------------------------
-    config = get_config(args.config)
+    config = get_config(args.config, default_config)
 
     IDTarget = config.get("IDTarget", "")
 
