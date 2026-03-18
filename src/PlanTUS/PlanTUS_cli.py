@@ -64,6 +64,7 @@ def main():
     parser.add_argument("--skip_wb_view", action="store_true", help="Run calculations but skip wb_view")
     parser.add_argument("--use_internal_viewer", action="store_true", help="Use own viewer instead of wb_view")
     parser.add_argument("--do_only_trajectory", type=int, default=-1, help="Optional integer to run only the generation of trajectory (default: -1). Specify number of triangles to generate.")
+    parser.add_argument("--version", action="store_true", help="Print the version number and exit.")
 
     args = parser.parse_args()
 
@@ -91,6 +92,11 @@ def run(args):
     global max_distance, min_distance, transducer_diameter, max_angle
     global plane_offset, additional_offset, transducer_surface_model_filepath
     global focal_distance_list, flhm_list, placement_scene_template_filepath
+
+    if args.version is not None:
+        print(PlanTUS.__version__)
+        sys.exit(1)
+
     #===============================================================================
     #===============================================================================
     # Configure inputs
