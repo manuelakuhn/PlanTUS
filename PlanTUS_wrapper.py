@@ -22,7 +22,11 @@ if __name__ == "__main__":
     parser.add_argument("--use_internal_viewer",action="store_true",help="Use own viewer instead of wb_view")
     parser.add_argument("--do_only_trajectory",type=int,default=-1,help="Optional integer to run only the generation of trajectory (default: -1). Specify number of triangles to generate.")
 
-    args = parser.parse_args()
+    wrapper_args = parser.parse_args()
 
-    run(args)
+    cli_args = wrapper_args
+    cli_args.version = None
+    cli_args.create_config = False
+
+    run(cli_args)
 
