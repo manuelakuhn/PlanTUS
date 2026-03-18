@@ -13,10 +13,10 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
   "nibabel",
-  "nilearn", 
-  "numpy", 
-  "pynput", 
-  "PyQt5", 
+  "nilearn",
+  "numpy",
+  "pynput",
+  "PyQt5",
   "vtk",
   "PyYAML"
 ]
@@ -26,6 +26,9 @@ classifiers = [
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
+
+[tool.hatch.version]
+path = "src/PlanTUS/__init__.py"
 
 [project.scripts]
 plantus = "PlanTUS.PlanTUS_cli:main"
