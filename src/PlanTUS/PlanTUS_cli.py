@@ -94,7 +94,7 @@ def run(args):
     global plane_offset, additional_offset, transducer_surface_model_filepath
     global focal_distance_list, flhm_list, placement_scene_template_filepath
 
-    if args.version is not None:
+    if args.version:
         print(PlanTUS.__version__)
         sys.exit(1)
 
