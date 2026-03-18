@@ -72,9 +72,10 @@ def main():
 
     # TODO change parameter to --t1, --mesh and --roi
     # till this is done: workaround
-    args.t1 = args.t1[0]
-    args.mesh = args.mesh[0]
-    args.roi = args.roi[0]
+    if not args.version and not args.create_config:
+        args.t1 = args.t1[0]
+        args.mesh = args.mesh[0]
+        args.roi = args.roi[0]
 
     run(args)
 
