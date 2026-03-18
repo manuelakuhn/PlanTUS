@@ -70,6 +70,12 @@ def main():
 
     args = parser.parse_args()
 
+    # TODO change parameter to --t1, --mesh and --roi
+    # till this is done: workaround
+    args.t1 = args.t1[0]
+    args.mesh = args.mesh[0]
+    args.roi = args.roi[0]
+
     run(args)
 
 def get_config(config_argument, default_config):
