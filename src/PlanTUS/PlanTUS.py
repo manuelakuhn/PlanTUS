@@ -309,8 +309,8 @@ def compute_surface_metrics(surface_filepath: str) -> Tuple[np.ndarray, np.ndarr
     os.system(f"{wb_command_cmd} -logging OFF -surface-coordinates-to-metric {surface_filepath} {coords_func}")
     os.system(f"{wb_command_cmd} -logging OFF -surface-normals {surface_filepath} {norms_func}")
 
-    coords = np.asfarray(surface.load_surf_data(coords_func))
-    norms = np.asfarray(surface.load_surf_data(norms_func))
+    coords = np.asarray(surface.load_surf_data(coords_func), dtype="float64")
+    norms = np.asarray(surface.load_surf_data(norms_func), dtype="float64")
 
     os.remove(coords_func)
     os.remove(norms_func)
